@@ -5,6 +5,8 @@ Vaultly is a modern and responsive password manager web application built using 
 
 The application features a clean dashboard, password generator, encrypted local storage, and light and dark themes for a better user experience.
 
+LIVE URL : https://prabakaran1209.github.io/Password-manager/
+
 ## ✨ Features
 
 - **Master Password Authentication** – Create and unlock your personal password vault.
@@ -119,10 +121,6 @@ The main objective of Vaultly is to develop a simple, user-friendly password man
 **Prabakaran S**
 
 GitHub: [@prabakaran1209](https://github.com/prabakaran1209)
-
-## 📜 License
-
-This project is licensed under the MIT License.
 
 ---
 
