@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaultly - Password Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+    <aside class="sidebar">
+      <h2 class="logo">🔐 Vaultly</h2>
+      <p class="side-label">MENU</p>
+      <button class="nav active">▦ All Passwords</button>
+      <div class="sidebar-bottom">
+        <p>Secure your digital life.</p>
+        <button id="lockBtn" class="nav">🔒 Lock Vault</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header>
+        <div>
+          <p class="eyebrow">YOUR PERSONAL VAULT</p>
+          <h1>Welcome back.</h1>
+          <p class="muted">Manage your accounts securely.</p>
+        </div>
+        <div class="header-actions">
+          <button id="themeBtn" class="icon-btn">☼</button>
+          <button id="addBtn" class="primary-btn">+ Add Password</button>
+        </div>
+      </header>
+
+      <section class="stats">
+        <div class="stat-card">
+          <p>Total Passwords</p>
+          <h2 id="totalStat">0</h2>
+          <span>Saved accounts</span>
+        </div>
+        <div class="stat-card">
+          <p>Strong Passwords</p>
+          <h2 id="strongStat">0</h2>
+          <span>12+ characters</span>
+        </div>
+        <div class="stat-card">
+          <p>Vault Status</p>
+          <h2 class="secure">Secure</h2>
+          <span>Encrypted storage</span>
+        </div>
+      </section>
+
+      <section class="vault">
+        <div class="section-head">
+          <div>
+            <h2>Your Passwords</h2>
+            <p class="muted">All your accounts in one place.</p>
+          </div>
+        </div>
+
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search websites or usernames..."
+        >
+
+        <div id="passwordList"></div>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">🔐</div>
+          <h3>Your vault is ready!</h3>
+          <p>Add your first account to get started.</p>
+          <button class="primary-btn" id="emptyAddBtn">
+            + Add Your First Password
+          </button>
+        </div>
+      </section>
+
+      <footer>
+        <span>Vaultly · Private by design</span>
+        <span>● Encrypted local vault</span>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Master password screen -->
+  <div class="overlay" id="authOverlay">
+    <div class="auth-card">
+      <div class="auth-logo">🔐</div>
+      <p class="eyebrow">WELCOME TO VAULTLY</p>
+      <h2 id="authTitle">Create Your Vault</h2>
+      <p id="authDescription">
+        Create a master password to protect your vault.
+      </p>
+
+      <form id="authForm">
+        <label>Master Password</label>
+        <input
+          type="password"
+          id="masterPassword"
+          placeholder="At least 10 characters"
+          required
+        >
+
+        <div id="confirmWrap">
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Enter password again"
+          >
+        </div>
+
+        <p id="authError" class="error"></p>
+        <button class="primary-btn full" id="authSubmit">
+          Create Secure Vault
+        </button>
+      </form>
+      <small>Your master password cannot be recovered.</small>
+    </div>
+  </div>
+
+  <!-- Add / Edit password modal -->
+  <div class="overlay hidden" id="entryOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">Add Password</h2>
+        <button id="closeModal" class="close-btn">×</button>
+      </div>
+
+      <form id="entryForm">
+        <input type="hidden" id="entryId">
+
+        <label>Website / App Name</label>
+        <input id="siteInput" placeholder="Example: GitHub" required>
+
+        <label>Username</label>
+        <input id="usernameInput" placeholder="Your username">
+
+        <label>Email</label>
+        <input id="emailInput" type="email" placeholder="you@example.com">
+
+        <label>Password</label>
+        <div class="password-field">
+          <input id="passwordInput" type="password" required>
+          <button type="button" class="reveal-btn" data-reveal="passwordInput">Show</button>
+        </div>
+
+        <div class="generator">
+          <span id="strengthLabel">Password strength: —</span>
+          <button type="button" id="generateBtn">Generate Password</button>
+        </div>
+
+        <label>Notes (Optional)</label>
+        <textarea id="notesInput" rows="3" placeholder="Additional notes..."></textarea>
+
+        <p id="entryError" class="error"></p>
+
+        <div class="modal-actions">
+          <button type="button" id="cancelModal" class="secondary-btn">Cancel</button>
+          <button type="submit" class="primary-btn">Save Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
